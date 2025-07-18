@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+
+{% block content %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
+<div class="login-container">
+    <div class="login-header">
+        <img src="{{ url_for('static', filename='img/Logo.png') }}" 
+             alt="شعار المدرسة" 
+             class="logo">
+        <h3 class="school-name">الثانوية الأهلية الفرنسية العربية ابراهيم كونتاو</h3>
+        <p class="welcome-message">نظام إدارة المدرسة</p>
+    </div>
+    
+    <form method="post" class="login-form" novalidate>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ category }}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+        
+        <div class="form-group">
+            <label for="username" class="form-label">
+                <i class="fas fa-user"></i> اسم المستخدم
+            </label>
+            <input type="text" 
+                   id="username" 
+                   name="username" 
+                   class="form-control"
+                   placeholder="أدخل اسم المستخدم"
+                   required
+                   autofocus>
+        </div>
+        
+        <div class="form-group">
+            <label for="password" class="form-label">
+                <i class="fas fa-lock"></i> كلمة المرور
+            </label>
+            <input type="password" 
+                   id="password" 
+                   name="password" 
+                   class="form-control"
+                   placeholder="أدخل كلمة المرور"
+                   required>
+        </div>
+        
+        <button type="submit" class="btn-login">
+            <i class="fas fa-sign-in-alt"></i> تسجيل الدخول
+        </button>
+        
+        <div class="forgot-password">
+            <a href="#">
+                <i class="fas fa-question-circle"></i> نسيت كلمة المرور؟
+            </a>
+        </div>
+    </form>
+</div>
+{% endblock %}
