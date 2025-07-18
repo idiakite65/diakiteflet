@@ -1,20 +1,31 @@
---- ============ table DG ==================
-create table dg(
-    id_dg serial,
-    nom_dg varchar(35),
-    prenom_dg varchar(35),
-    email_dg varchar(65),
-    tel_dg varchar(85),
-    pass_dg varchar(250),
-    pass_dg_info varchar(50)
+--- ============ table CLASSES ==================
+create table CLASSES(
+    id_cl serial,
+    nom_cl varchar(35),
+    Coef  int,
+    Niveau varchar(10),
+    
 );
---- ============ end table DG ==================
+--- ============ end table CLASSES ==================
 
 
---- ============ contraint table DG ==================
-alter table dg add constraint dg_pkey primary key (id_dg);
-alter table dg  add constraint not null email_dg;
-alter table dg  add constraint not null pass_dg;
-alter table dg  add constraint dg_unique unique (nom_dg,)
-alter table ecoles add constraint eco_fkey foreign key (id_dg) references to (dg) on update cascade on delete cascade;
---- ============ ennd contraint table DG ==================
+--- ============ contraint table CLASSES ==================
+alter table CLASSES add constraint dg_pkey primary key (id_cl);
+alter table CLASSES  add constraint not null nom_cl;
+alter table dg  CLASSES constraint not null Coef;
+alter table dg  CLASSES constraint dg_unique unique (nom_cl)
+--- ============ ennd contraint table CLASSES ==================
+
+--- ============ table SERIES ==================
+create table SERIES(
+    id_se serial,
+    nom_se varchar(35),
+    id_ecol  int,   
+    
+);
+--- ============ contraint table SERIES ==================
+alter table SERIES add constraint dg_pkey primary key (id_se);
+alter table SERIES  add constraint not null nom_se;
+alter table dg  SERIES constraint dg_unique unique (nom_se)
+alter table ecoles SERIES constraint eco_fkey foreign key (id_dg) references to (dg) on update cascade on delete cascade;
+--- ============ ennd contraint table CLASSES ==================
