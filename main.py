@@ -32,14 +32,15 @@ alter table SERIES constraint se_fkey foreign key (id_se) references to (ECOLE) 
 --- ============ table MATIERES ==================
 create table MATIERES(
     id_ma serial,
-    nom_ma1 varchar(505),
-    nom_ma2 varchar(505),
+    nom_ma1 varchar(50),
+    nom_ma2 varchar(50),
     coef_ma int,
     id_ecol  int, 
 );
---- ============ contraint table SERIES ==================
-alter table MATIERES add constraint se_pkey primary key (id_se);
-alter table MATIERES  add constraint not null nom_se;
-alter table dg  MATIERES constraint se_unique unique (nom_se)
-alter table MATIERES constraint se_fkey foreign key (id_se) references to (ECOLE) on update cascade on delete cascade;
---- ============ ennd contraint table SERIES ==================
+--- ============ contraint table MATIERES ==================
+alter table MATIERES add constraint ma_pkey primary key (id_ma);
+alter table MATIERES  add constraint not null nom_ma1;
+alter table MATIERES  add constraint not null nom_ma2;
+alter table MATIERES constraint ma_unique unique (nom_ma1)
+alter table MATIERES constraint ma_fkey foreign key (id_ma) references to (ECOLE) on update cascade on delete cascade;
+--- ============ ennd contraint table MATIERES ==================
