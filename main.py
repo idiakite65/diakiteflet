@@ -1,4 +1,3 @@
-
 --- ============ table CLASSES ==================
 create table CLASSES(
     id_cl serial,
