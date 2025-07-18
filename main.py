@@ -1,3 +1,4 @@
+
 --- ============ table CLASSES ==================
 create table CLASSES(
     id_cl serial,
@@ -44,3 +45,18 @@ alter table MATIERES  add constraint not null nom_ma2;
 alter table MATIERES constraint ma_unique unique (nom_ma1)
 alter table MATIERES constraint ma_fkey foreign key (id_ma) references to (ECOLE) on update cascade on delete cascade;
 --- ============ ennd contraint table MATIERES ==================
+
+
+--- ============ table MATIERECLASSE ==================
+create table MATIERECLASSE(
+    id_ma_cl serial,
+    id_ma int,
+    id_cl int,
+    id_em int,   
+);
+--- ============ contraint table MATIERECLASSE ==================
+alter table MATIERECLASSE add constraint ma_pkey primary key (id_ma_cl);
+alter table MATIERECLASSE constraint macl1_fkey foreign key (id_ma) references to (MATIERES) on update cascade on delete cascade;
+alter table MATIERECLASSE constraint macl2_fkey foreign key (id_cl) references to (CLASSES) on update cascade on delete cascade;
+alter table MATIERECLASSE constraint macl2_fkey foreign key (id_em) references to (ECOLE) on update cascade on delete cascade;
+--- ============ ennd contraint table MATIERECLASSE ==================
