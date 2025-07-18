@@ -16,4 +16,5 @@ alter table dg add constraint dg_pkey primary key (id_dg);
 alter table dg  add constraint not null email_dg;
 alter table dg  add constraint not null pass_dg;
 alter table dg  add constraint dg_unique unique (nom_dg,)
+alter table ecoles add constraint eco_fkey foreign key (id_dg) references to (dg) on update cascade on delete cascade;
 --- ============ ennd contraint table DG ==================
