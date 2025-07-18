@@ -10,7 +10,7 @@ create table CLASSES(
 
 
 --- ============ contraint table CLASSES ==================
-alter table CLASSES add constraint dg_pkey primary key (id_cl);
+alter table CLASSES add constraint cl_pkey primary key (id_cl);
 alter table CLASSES  add constraint not null nom_cl;
 alter table dg  CLASSES constraint not null Coef;
 alter table dg  CLASSES constraint dg_unique unique (nom_cl)
@@ -24,8 +24,8 @@ create table SERIES(
     
 );
 --- ============ contraint table SERIES ==================
-alter table SERIES add constraint dg_pkey primary key (id_se);
+alter table SERIES add constraint se_pkey primary key (id_se);
 alter table SERIES  add constraint not null nom_se;
-alter table dg  SERIES constraint dg_unique unique (nom_se)
-alter table ecoles SERIES constraint eco_fkey foreign key (id_dg) references to (dg) on update cascade on delete cascade;
+alter table dg  SERIES constraint se_unique unique (nom_se)
+alter table SERIES constraint se_fkey foreign key (id_se) references to (ECOLE) on update cascade on delete cascade;
 --- ============ ennd contraint table CLASSES ==================
